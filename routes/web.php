@@ -30,6 +30,9 @@ Route::post('/add', [TaskController::class, 'addTask'])->name('addTask');
 Route::get('/panel/categories', [CategoryController::class, 'index'])->name('categories');
 Route::get('/panel/categories/create', [CategoryController::class, 'create'])->name('categories.create');
 Route::post('/panel/categories/add', [CategoryController::class, 'store'])->name('categories.add');
+Route::get('/panel/categories/edit/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
+//Route::post('/panel/categories/update/{id}', [CategoryController::class, 'update'])->name('categories.update'); bu parametre ile güncelleme yapma routeu
+Route::post('/panel/categories/update', [CategoryController::class, 'update'])->name('categories.update');
 
 //kategori routes end
 

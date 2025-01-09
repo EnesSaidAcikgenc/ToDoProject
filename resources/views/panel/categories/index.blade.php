@@ -9,7 +9,16 @@
                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                </div>
            @endif
+
+           @if(session('error'))
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    {{session('error')}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+           @endif
+
        </div>
+
        <div class="card-header">
            <h3>Kategoriler</h3>
            <a href="{{route('categories.create')}}" class="btn btn-lg btn-success" >Yeni kategori Oluştur</a>
@@ -48,8 +57,8 @@
                                                <i class="bx bx-dots-vertical-rounded"></i>
                                            </button>
                                            <div class="dropdown-menu">
-                                               <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                               <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                                               <a class="dropdown-item" href="{{route('categories.edit',$categorie->id)}}"><i class="bx bx-edit-alt me-1"></i>Güncelle</a>
+                                               <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>Sil</a>
                                            </div>
                                        </div>
                                    </td>
