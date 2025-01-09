@@ -42,7 +42,16 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255|min:3',
             'is_active' => 'required|min:0|max:1|boolean',
-            ]);
+            ],[
+                'name.required' => 'Kategorinin isim alanı boş bırakılamaz.',
+                'name.string' => 'Kategorinin isiminde olmaması gereken bir karakter kullanmayın. ',
+                'name.max' => 'Kategorinin ismini biraz kısa tutunuz. ',
+                'name.min' => 'Kategorinin ismini biraz uzun tutunuz. ',
+                'is_active.required' => 'Kategorinin durumunu belirtmelisiniz.',
+                'is_active.min' => 'Kategori en az 0 değerini alabilir.',
+                'is_active.max' => 'Kategori en fazla 1 değerini alabilir.',
+                'is_active.boolean' => 'Kategorinin durumuna bir karakterden farklı değer atamayınız .',
+        ]);
 
         $categorie = categories::find($request->catID);
         if ($categorie != null){
