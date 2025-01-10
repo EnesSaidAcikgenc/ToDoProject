@@ -33,6 +33,7 @@ Route::post('/panel/categories/add', [CategoryController::class, 'store'])->name
 Route::get('/panel/categories/edit/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
 //Route::post('/panel/categories/update/{id}', [CategoryController::class, 'update'])->name('categories.update'); bu parametre ile güncelleme yapma routeu
 Route::post('/panel/categories/update', [CategoryController::class, 'update'])->name('categories.update');
+Route::get('/panel/categories/delete/{id}', [CategoryController::class, 'delete'])->name('categories.delete');
 
 //kategori routes end
 
@@ -40,4 +41,14 @@ Route::post('/panel/categories/update', [CategoryController::class, 'update'])->
 //test route
 Route::get('/test', function () {
     return view('panel.layout.app');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });

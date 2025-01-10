@@ -9,7 +9,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = categories::all();
+        //$categories = categories::all(); aynı yöntem ama farklı bir yöntem
+        $categories = categories::get();
         return view('panel.categories.index', compact('categories'));
     }
     public function create()
@@ -63,6 +64,22 @@ class CategoryController extends Controller
         }else{
             return redirect()->route('categories')->with(['error'=>'Bir hata oluştu lütfen tekrar deneyiniz.']);
         }
+
+
+    }
+
+    public function delete($id)
+    {
+      $category = categories::find($id);
+
+      if ($category == null){
+          $category -> delete();
+          return redirect()->route('categories')->with(['success'=>'Kategori Başarıyla Silindi.']);
+      }else{
+          return redirect()->route('categories')->with(['error'=>'Hata oluştu.']);
+      }
+
+
 
     }
 }

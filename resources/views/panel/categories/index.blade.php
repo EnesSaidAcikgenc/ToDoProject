@@ -50,7 +50,7 @@
                                            Pasif
                                        @endif
                                    </td>
-                                   <td>{{$categorie->created_at}}</td>
+                                   <td>{{$categorie->created_at->diffForHumans()}}</td>
                                    <td>
                                        <div class="dropdown">
                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -58,7 +58,7 @@
                                            </button>
                                            <div class="dropdown-menu">
                                                <a class="dropdown-item" href="{{route('categories.edit',$categorie->id)}}"><i class="bx bx-edit-alt me-1"></i>Güncelle</a>
-                                               <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>Sil</a>
+                                               <a class="dropdown-item" href="{{route('categories.delete',$categorie->id)}}"><i class="bx bx-trash me-1"></i>Sil</a>
                                            </div>
                                        </div>
                                    </td>
