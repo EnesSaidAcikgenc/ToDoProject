@@ -13,4 +13,11 @@ class tasks extends Model
     protected $table = 'tasks';
 
     protected $fillable = ['title, content, status, deadline'];
+
+
+    //belongsTo , hasMany , hasOne , belongsToMany , hasManyThrough
+    public function getCategorie()
+    {
+        return $this->belongsTo(categories::class, 'category_id','id');
+    }
 }

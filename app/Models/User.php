@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Console\View\Components\Task;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -58,4 +59,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getTasks()
+    {
+        return $this->hasManyThrough(tasks::class,categories::class , 'user_id', 'category_id');
+    }
+
+    public function getCategory()
+    {
+        return $this->hasmany(categories::class,'user_id','id');
+    }
 }

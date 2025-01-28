@@ -21,9 +21,13 @@ Route::get('/', function () {
 
 
 //task routeları başlangıç
+Route::get('/home',[TaskController::class,'index'])->name('home');
 Route::get('/create', [TaskController::class, 'createPage'])->name('create');
 Route::post('/add', [TaskController::class, 'addTask'])->name('addTask');
 //task routeları Bitiş
+
+
+
 
 //kategori routes start
 
@@ -38,10 +42,17 @@ Route::get('/panel/categories/delete/{id}', [CategoryController::class, 'delete'
 //kategori routes end
 
 
+
+
+
 //test route
 Route::get('/test', function () {
     return view('panel.layout.app');
 });
+
+
+
+
 
 Route::middleware([
     'auth:sanctum',

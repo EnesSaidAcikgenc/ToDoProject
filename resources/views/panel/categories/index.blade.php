@@ -32,6 +32,7 @@
                            <tr>
                                <th>#</th>
                                <th>Kategori Adı</th>
+                               <th>Kategori Kullanıcısı</th>
                                <th>Durumu</th>
                                <th>Oluşturulma Tarihi</th>
                                <th>İşlemler</th>
@@ -43,6 +44,8 @@
                                <tr>
                                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$categorie->id}}</strong></td>
                                    <td>{{$categorie->name}}</td>
+{{--                                   <td>{{\App\Models\User::where('id',$categorie->user_id)->first()->name}}</td> hangi kullanıcılara ait onu görebilmenin yolu--}}
+                                   <td>{{$categorie->user->name}}</td> {{-- buda kısa hali --}}
                                    <td>
                                        @if($categorie->is_active == 1)
                                            Aktif

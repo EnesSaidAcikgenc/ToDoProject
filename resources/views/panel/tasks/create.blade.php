@@ -17,6 +17,14 @@
                         <label for="defaultFormControlInput" class="form-label">İçerik :</label>
                         <input type="text" class="form-control" name="content" id="content">
 
+                        <label for="defaultFormControlInput" class="form-label">Kategori :</label>
+                        <select name="category" id="category" class="form-control">
+                            <option selected disabled>Lütfen seçim yapınız</option>
+                            @foreach($categories as $cat)
+                                <option value="{{$cat->id}}">{{$cat->name}}</option>
+                            @endforeach
+                        </select>
+
                         <label for="defaultFormControlInput" class="form-label">Durum :</label>
                         <select name="status" id="status" class="form-control">
                             <option selected disabled>Lütfen seçim yapınız</option>
